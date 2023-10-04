@@ -1,0 +1,29 @@
+<section class="pt-6">
+  <div class="columns is-vcentered is-centered">
+    <div class="column is-one-fifth">
+      <div class="box">
+        <turbo-frame id="questions">
+          <figure class="image is-4by5">
+            <%= image_tag(@quizzes[:pic]) %>
+          </figure>
+        </turbo-frame>
+      </div>
+    </div>
+  </div>
+  <turbo-frame id="answer">
+    <%= form_with url: check_answer_path, remote: true do |f| %>
+      <div class="columns is-vcentered is-centered">
+        <div class="column is-one-fifth">
+          <%= f.hidden_field :name, value: @quizzes[:title] %>
+          <%= f.text_field "", class:"input" %>
+        </div>
+      </div>
+      <div class="columns is-vcentered is-centered">
+        <div class="column is-one-fifth">
+          <%= f.submit "Guess", class: "is-centered button" %>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'get_rapper', get_another_rapper_path, data: { turbo_frame: "questions" } %>
+  </turbo-frame>
+</section>
