@@ -1,10 +1,12 @@
 class QuizzesController < ApplicationController
 
   def index
-    @quizzes = RapperContentScraper.generate
+ 
   end
 
-  def check_answer
+
+  def show
+    @quizzes = RapperContentScraper.generate
   end
 
   def get_another_rapper
